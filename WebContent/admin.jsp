@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%@ page language="java" import="com.uniovi.sdi.*"%>
+<%@ page language="java" import="com.uniovi.sdi.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
 "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
@@ -25,13 +25,10 @@
 		}
 	%>
 
+	<jsp:useBean id="producto" class="com.uniovi.sdi.Producto" />
+	<jsp:setProperty name="producto" property="*" />
 	<%
-		if (request.getParameter("nombre") != null && request.getParameter("imagen") != null
-				&& request.getParameter("precio") != null) {
-			String nombre = (String) request.getParameter("nombre");
-			String imagen = (String) request.getParameter("imagen");
-			float precio = Float.parseFloat(request.getParameter("precio"));
-			Producto producto = new Producto(nombre, imagen, precio);
+		if (producto.getNombre() != null) {
 			new ProductosService().setNuevoProducto(producto);
 			request.getRequestDispatcher("index.jsp").forward(request, response);
 		}
