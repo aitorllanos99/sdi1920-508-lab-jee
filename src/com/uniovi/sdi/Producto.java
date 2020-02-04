@@ -5,6 +5,9 @@ public class Producto {
 	private String imagen;
 	private float precio;
 
+	public Producto() {
+		// TODO Auto-generated constructor stub
+	}
 	public Producto(String nombre, String imagen, float precio) {
 		this.nombre = nombre;
 		this.imagen = imagen;

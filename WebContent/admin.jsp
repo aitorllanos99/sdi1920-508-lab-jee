@@ -21,15 +21,15 @@
 		<c:redirect url="/login.jsp" />
 	</c:if>
 
-	<jsp:useBean id="producto" class="com.uniovi.sdi.Producto" />
+	<jsp:useBean id="producto" class="com.uniovi.sdi.Producto"/>
+	
 	<jsp:setProperty name="producto" property="*" />
-	<c:if test="${producto.nombre != null}">
-		<jsp:useBean id="productosService"
-			class="com.uniovi.sdi.ProductosService" />
-		<jsp:setProperty name="productosService" property="nuevoProducto"
-			value="${producto}" />
-		<c:redirect url="/index.jsp" />
-	</c:if>
+	<%
+ 		if (producto.getNombre() != null) {
+ 			new ProductosService().setNuevoProducto(producto);
+ 			request.getRequestDispatcher("index.jsp").forward(request, response);
+ 		}
+	%>
 	<!-- Contenido -->
 	<div class="container" id="contenedor-principal">
 		<h2>Agregar producto a la tienda</h2>
@@ -38,30 +38,31 @@
 				<label class="control-label col-sm-2" for="nombre">Nombre:</label>
 				<div class="col-sm-10">
 					<input type="text" class="form-control" name="nombre"
-						required="true" /> /div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="imagen">URL
-							imagen:</label>
-						<div class="col-sm-10">
-							<input type="text" class="form-control" name="imagen"
-								required="true" />
-						</div>
-					</div>
-					<div class="form-group">
-						<label class="control-label col-sm-2" for="precio">Precio
-							(€):</label>
-						<div class="col-sm-10">
-							<input type="number" step="0.01" class="form-control"
-								name="precio" required="true" />
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="col-sm-offset-2 col-sm-10">
-							<button type="submit" class="btn btn-primary">Agregar</button>
-						</div>
-					</div>
+						required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="imagen">URL
+					imagen:</label>
+				<div class="col-sm-10">
+					<input type="text" class="form-control" name="imagen"
+						required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="precio">Precio
+					(€):</label>
+				<div class="col-sm-10">
+					<input type="number" step="0.01" class="form-control" name="precio"
+						required="true" />
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-sm-offset-2 col-sm-10">
+					<button type="submit" class="btn btn-primary">Agregar</button>
+				</div>
+			</div>
 		</form>
-
 	</div>
 </body>
 </html>
