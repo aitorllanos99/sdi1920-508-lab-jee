@@ -28,7 +28,8 @@
 		
 	}else{
 		//Credencial invalido, lo elimino de sesion(opcional)
-		request.getSession().setAttribute("usuario",null);
+		request.getSession().setAttribute("nombre",password);
+		//response.sendRedirect("index.jsp");
 	}
 %>
 	<!-- Contenido -->

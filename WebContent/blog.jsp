@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
-"http://www.w3.org/TR/html4/loose.dtd">
-<html lang="en">
+<!DOCTYPE html>
+<html>
 <head>
-<title>JSP</title>
+<meta charset="utf-8" />
+<title>Blog</title>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link rel="stylesheet"
@@ -16,19 +16,15 @@
 	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<!-- Contenido -->
-	<div class="container" id="contenedor-principal">
-		<h2>Vista-Carrito</h2>
-		<ul>
-			<c:forEach var="par" items="${paresCarrito}">
-				<tr>
-					<li>${par.key}-${par.value}
-					<a href="borraDeCarrito?producto=<c:out value="${par.key}"/>"
-						class="btn btn-default">Borrar Articulo</a>
-					</li>
-				</tr>
-			</c:forEach>
-		</ul>
-	</div>
+
+	<c:redirect url="/login.jsp" />
+
+	<h1>Introduce tu comentario</h1>
+	<input type="text">
+	<a href="post?texto=<c:out value="${producto.nombre}"/>"
+		class="btn btn-default">
+	</a>
+
+
 </body>
 </html>
